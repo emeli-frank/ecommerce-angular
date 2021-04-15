@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+    <div>
+        <input [formControl]="firstName" placeholder="firstName">
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+            <span *ngIf="firstName.errors?.required">This field is required</span>
+            <span *ngIf="firstName.errors?.maxlength">This field cannot be more than {{firstName.errors.maxlength.requiredLength}} characters</span>
+        </div>
+    </div>
+
+    <div>
+        <input [formControl]="lastName" placeholder="lastName">
+        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+            <span *ngIf="lastName.errors?.required">This field is required</span>
+            <span *ngIf="lastName.errors?.maxlength">This field cannot be more than {{lastName.errors.maxlength.requiredLength}} characters</span>
+        </div>
+    </div>
+
+    <div>
+        <input [formControl]="email" placeholder="email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.required">This field is required</span>
+            <span *ngIf="email.errors?.maxlength">This field cannot be more than {{email.errors.maxlength.requiredLength}} characters</span>
+            <span *ngIf="email.errors?.email">A valid email is required</span>
+        </div>
+    </div>
+
+    <div>
+        <input [formControl]="password" placeholder="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <span *ngIf="password.errors?.required">This field is required</span>
+            <span *ngIf="password.errors?.minlength">This field cannot be less than {{password.errors.minlength.requiredLength}} characters</span>
+            <span *ngIf="password.errors?.maxlength">This field cannot be more than {{password.errors.maxlength.requiredLength}} characters</span>
+        </div>
+    </div>
+
+    <div>
+        <input [formControl]="confirmPassword" placeholder="confirmPassword">
+        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+            <span *ngIf="confirmPassword.errors?.passwordMismatch">Password does not match</span>
+        </div>
+    </div>
+
+
+    <button (click)="submit()" [disabled]="!form.valid">Submit</button>
+</form>
