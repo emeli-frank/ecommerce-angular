@@ -1,0 +1,23 @@
+<app-dialog-scaffold [title]="title"
+        [message]="message"
+        [primaryButtonLabel]="primaryButtonLabel"
+        [secondaryButtonLabel]="closeButtonLabel"
+        [isBusy]="isBusy"
+        (primaryClicked)="submitValue()"
+        (secondaryClicked)="close()">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{fieldPlaceholder}}</mat-label>
+            <input matInput [placeholder]="fieldPlaceholder" [formControl]="textControl" [minlength]="minLen" [maxlength]="maxLen">
+            <mat-hint *ngIf="hint">{{hint}}</mat-hint>
+            <mat-error *ngFor="let err of errors" class="field-error">
+                {{err}}
+            </mat-error>
+        </mat-form-field>    
+</app-dialog-scaffold>
+
+<style>
+    .field-error {
+        font-size: 12px;
+        color: red; /* todo: use sass */
+    }
+</style>

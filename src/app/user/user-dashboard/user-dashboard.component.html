@@ -1,0 +1,11 @@
+<div>{{user | json}}</div>
+
+<button (click)="edit()">Edit</button>
+
+<div>
+    <div *ngFor="let card of creditCards">
+        {{card.name}} 
+        <button (click)="deleteCard(card.id)">Remove</button>
+    </div>
+    <button (click)="newCard()">Add card</button>
+</div>

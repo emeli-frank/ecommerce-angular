@@ -1,15 +1,15 @@
 <ul>
     <li routerLink="/">Home</li>
-</ul>
 
-<ul>
     <li routerLink="/catalog">Catalog</li>
+
+    <li routerLink="/user" *ngIf="loggedIn">Dashboard</li>
+
+    <li routerLink="/login" *ngIf="!loggedIn">Login</li>
+
+    <li (click)="logout()" *ngIf="loggedIn">Logout</li>
+
+    <li routerLink="/sign-up" *ngIf="!loggedIn">Sign up</li>
 </ul>
 
-<ul>
-    <li routerLink="/login">Login</li>
-</ul>
-
-<ul>
-    <li routerLink="/sign-up">Sign up</li>
-</ul>
+<h1>Logged in? => {{loggedIn}}</h1>

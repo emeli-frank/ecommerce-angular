@@ -5,12 +5,16 @@ export abstract class User {
   constructor(public id: number, public firstName: string, public lastName: string, public email: string, public roles: Roles[]) {}
 
   static fromJSON(data: UserJSON): User {
-    if (this instanceof Customer) {
+    if (data.roles.includes(Roles.Customer)) {
       return Customer.fromJSON(data);
+    } else {
+      throw "unknown user type";
     }
   }
 
   abstract toJSON(): object;
+
+  abstract new(): User;
 }
 
 export class Customer extends User {
@@ -30,6 +34,16 @@ export class Customer extends User {
       email: this.email,
       roles: this.roles,
     }
+  }
+
+  new(): Customer {
+    return Customer.fromJSON({
+      id: this.id,
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      roles: this.roles,
+    });
   }
 }
 

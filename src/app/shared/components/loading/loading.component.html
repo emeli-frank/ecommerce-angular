@@ -1,0 +1,14 @@
+<span>{{message}}</span>
+<ng-container *ngFor="let indicator of indicators">
+    <span [class.invisible-indicator]="!indicator.visible">.</span>
+</ng-container>
+
+<style>
+    .invisible-indicator {
+        opacity: 0;
+    }
+
+    span {
+        color: #646464;
+    }
+</style>

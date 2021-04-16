@@ -1,1 +1,11 @@
-<p>login works!</p>
+<form [formGroup]="form">
+    <div>
+        <input [formControl]="email" placeholder="email">
+    </div>
+
+    <div>
+        <input [formControl]="password" placeholder="password">
+    </div>
+
+    <button (click)="login()">Submit</button>
+</form>

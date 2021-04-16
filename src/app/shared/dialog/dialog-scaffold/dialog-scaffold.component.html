@@ -1,0 +1,18 @@
+<h1 mat-h4 *ngIf="title" class="dialog-title">{{ title }}</h1>
+
+<div mat-dialog-content>
+    <p *ngFor="let m of message">{{ m }}</p>
+    <ng-content></ng-content>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button *ngIf="!hideSecondaryButton" (click)="submit('secondary')" [disabled]="isBusy">{{secondaryButtonLabel}}</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submit('primary')" [disabled]="isBusy">{{primaryButtonLabel}}</button>
+</mat-dialog-actions>
+
+<style>
+    .dialog-title {
+        font-size: 24px;
+        font-weight: 400;
+    }
+</style>

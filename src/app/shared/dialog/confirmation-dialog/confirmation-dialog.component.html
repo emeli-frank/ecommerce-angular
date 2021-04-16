@@ -1,0 +1,7 @@
+<app-dialog-scaffold [title]="title"
+        [message]="message"
+        [primaryButtonLabel]="primaryButtonLabel"
+        [secondaryButtonLabel]="closeButtonLabel"
+        [isBusy]="isBusy"
+        (primaryClicked)="close(true)"
+        (secondaryClicked)="close(false)"></app-dialog-scaffold>

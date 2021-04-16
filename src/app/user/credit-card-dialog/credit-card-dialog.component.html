@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+    <div>
+        <input [formControl]="name" placeholder="name">
+    </div>
+
+    <div>
+        <input [formControl]="number" placeholder="number">
+    </div>
+
+    <div>
+        <input [formControl]="cvc" placeholder="cvc">
+    </div>
+
+    <div>
+        <input [formControl]="expiryDate" placeholder="expiryDate">
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]>Cancel</button>
+        <button mat-button (click)="submit2()" [disabled]="!form.valid || isBusy" cdkFocusInitial>{{primaryButtonLabel}}</button>
+    </div>
+</form>
