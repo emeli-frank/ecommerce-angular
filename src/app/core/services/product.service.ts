@@ -33,4 +33,14 @@ export class ProductService {
       })
     );
   }
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get(
+      `${environment.apiBaseUrl}/products/${id}`
+    ).pipe(
+      map((data: ProductJSONData) => {
+        return Product.fromJSON(data)
+      })
+    );
+  }
 }

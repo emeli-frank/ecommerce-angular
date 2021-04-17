@@ -8,6 +8,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { AddressFormDialogComponent } from 'src/app/shared/components/address-form-dialog/address-form-dialog.component';
 import { CreditCard } from 'src/app/shared/models/credit-card';
 import { Address } from 'src/app/shared/models/interfaces/address';
+import { Order } from 'src/app/shared/models/order';
 import { User } from 'src/app/shared/models/user';
 import { CreditCardDialogComponent } from '../credit-card-dialog/credit-card-dialog.component';
 import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
@@ -23,6 +24,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   dialogsub: Subscription;
   cards: CreditCard[] = [];
   address: Address;
+  orders: Order[];
 
   constructor(
     private authService: AuthService, 
@@ -49,6 +51,9 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
         this.ns.alertGenericNetworkError();
       },
     });
+
+    // get orders
+    this.custService.getCustOrders(this.user.id).subscribe();
   }
 
   ngOnDestroy(): void {

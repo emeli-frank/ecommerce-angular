@@ -5,6 +5,8 @@
 
     <li routerLink="/user" *ngIf="loggedIn">Dashboard</li>
 
+    <li routerLink="/cart" *ngIf="loggedIn">Cart</li>
+
     <li routerLink="/login" *ngIf="!loggedIn">Login</li>
 
     <li (click)="logout()" *ngIf="loggedIn">Logout</li>

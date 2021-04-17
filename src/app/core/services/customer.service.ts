@@ -4,8 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddressFormDialogComponent } from 'src/app/shared/components/address-form-dialog/address-form-dialog.component';
+import { CartItem } from 'src/app/shared/interfaces/cart-item';
 import { CreditCard } from 'src/app/shared/models/credit-card';
 import { Address } from 'src/app/shared/models/interfaces/address';
+import { Order, OrderJSONData } from 'src/app/shared/models/order';
+import { Product, ProductJSONData } from 'src/app/shared/models/product';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -45,6 +48,15 @@ export class CustomerService {
           } else {
             return null;
           }
+        }),
+      );
+  }
+
+  getCustOrders(custId: number): Observable<Order[]> {
+    return this.http.get(`${environment.apiBaseUrl}/customers/${custId}/orders`)
+      .pipe(
+        map((res: OrderJSONData[]) => {
+          return res.map(r => Order.fromJSON(r));
         }),
       );
   }
@@ -94,5 +106,24 @@ export class CustomerService {
     });
 
     return result$;
+  }
+
+  addToCard(userId: number, productId: number): Observable<any> {
+    return this.http.post(
+      `${environment.apiBaseUrl}/customers/${userId}/cart`,
+      {product_id: productId},
+    )
+  }
+
+  getCartItems(custId: number): Observable<CartItem[]> {
+    return this.http.get(`${environment.apiBaseUrl}/customers/${custId}/cart`)
+      .pipe(
+        map((res: any) => {
+          return res.map(r => <CartItem>{
+            quantity: r.quantity,
+            product: Product.fromJSON(r.product),
+          });
+        }),
+      );
   }
 }

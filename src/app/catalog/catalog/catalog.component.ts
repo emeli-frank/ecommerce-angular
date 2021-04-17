@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 
@@ -12,7 +12,7 @@ export class CatalogComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) {
     this.route.data.subscribe(
       (data: {products: Product[]}) => {
         this.products = data.products;
@@ -23,6 +23,10 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     // this.productService.getProducts().subscribe();
+  }
+
+  onProductClick(productId: number) {
+    this.router.navigate(['/products/' + productId], {relativeTo: this.route});
   }
 
 }
