@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AddressFormDialogComponent } from 'src/app/shared/components/address-form-dialog/address-form-dialog.component';
 import { CreditCard } from 'src/app/shared/models/credit-card';
+import { Address } from 'src/app/shared/models/interfaces/address';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CustomerService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: MatDialog) { }
 
   saveCreditCard(card: CreditCard): Observable<number> {
     return this.http.post(
@@ -25,7 +28,71 @@ export class CustomerService {
     return this.http.get(`${environment.apiBaseUrl}/customers/cards`);
   }
 
+  getCustAddress(custId: number): Observable<Address> {
+    return this.http.get(`${environment.apiBaseUrl}/customers/${custId}/address`)
+      .pipe(
+        map((res: any) => {
+          if (res) {
+            const address = <Address>{
+              id: res.id,
+              country: res.country,
+              state: res.state,
+              city: res.city,
+              postalCode: res.postal_code,
+              address: res.address,
+            }
+            return address;
+          } else {
+            return null;
+          }
+        }),
+      );
+  }
+
   deleteCreditCard(id: number): Observable<any> {
     return this.http.delete(`${environment.apiBaseUrl}/customers/cards/${id}`);
+  }
+
+  deleteAddress(custId: number): Observable<any> {
+    return this.http.delete(`${environment.apiBaseUrl}/customers/${custId}/address`);
+  }
+
+  updateAddress(custId: number, addressToUpdate?: Address): Observable<Address> {
+    let resultSubject = new Subject<Address>();
+    let result$: Observable<Address> = resultSubject.asObservable();
+
+    const dialogRef = this.dialog.open(AddressFormDialogComponent, {
+      data: addressToUpdate,
+    });
+
+    const compInst = dialogRef.componentInstance;
+
+    compInst.done.subscribe((address: Address) => {
+      compInst.setBusy();
+      const json = {
+        id: address.id,
+        country: address.country,
+        state: address.state,
+        city: address.city,
+        postal_code: address.postalCode,
+        address: address.address,
+      }
+
+      this.http.put(`${environment.apiBaseUrl}/customers/${custId}/address`, json)
+        .subscribe({
+          next: (_) => {
+            resultSubject.next(address);
+            resultSubject.complete();
+            dialogRef.close();
+          },
+          error: err => {
+            resultSubject.error(err);
+            resultSubject.complete();
+            compInst.setIdleWithPrimaryButtonLabel('Retry');
+          }
+        });
+    });
+
+    return result$;
   }
 }

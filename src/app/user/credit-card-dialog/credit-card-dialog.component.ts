@@ -24,8 +24,6 @@ export class CreditCardDialogComponent extends Dialog implements OnInit {
   constructor(dialogRef: MatDialogRef<CreditCardDialogComponent>/* , @Inject(MAT_DIALOG_DATA) private data: CreditCard */) {
     super({
       primaryButtonLabel: 'Add', 
-      primaryButtonLabelWhenBusy: 'Adding...', 
-      closingManually: true,
     }, 
     dialogRef);
   }

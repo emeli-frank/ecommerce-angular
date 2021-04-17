@@ -10,6 +10,8 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
 import { AlertDialogComponent } from './dialog/alert-dialog/alert-dialog.component';
 import { WaitComponent } from './components/wait/wait.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { CustomerPaymentComponent } from './components/customer-payment/customer-payment.component';
+import { AddressFormDialogComponent } from './components/address-form-dialog/address-form-dialog.component';
 
 
 
@@ -22,6 +24,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ConfirmationDialogComponent,
     AlertDialogComponent,
     LoadingComponent,
+    CustomerPaymentComponent,
+    AddressFormDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     ConfirmationDialogComponent,
     AlertDialogComponent,
     LoadingComponent,
+    CustomerPaymentComponent,
   ]
 })
 export class SharedModule { }

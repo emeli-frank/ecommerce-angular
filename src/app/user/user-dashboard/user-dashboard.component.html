@@ -2,10 +2,22 @@
 
 <button (click)="edit()">Edit</button>
 
+<app-customer-payment 
+    [cards]="cards" 
+    (created)="newCard($event)" 
+    (deleted)="deleteCard($event)"></app-customer-payment>
+
 <div>
-    <div *ngFor="let card of creditCards">
-        {{card.name}} 
-        <button (click)="deleteCard(card.id)">Remove</button>
+    <div *ngIf="!address">
+        No default shipping address information
+
+        <button (click)="updateAddress()">Create</button>
     </div>
-    <button (click)="newCard()">Add card</button>
+
+    <div *ngIf="address">
+        {{ address | json}}
+
+        <button (click)="updateAddress(address)">Edit</button>
+        <button (click)="deleteAddress()">Delete</button>
+    </div>
 </div>

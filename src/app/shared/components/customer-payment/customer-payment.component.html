@@ -1,0 +1,7 @@
+<div>
+    <div *ngFor="let card of cards">
+        {{card.name}} 
+        <button (click)="deleteCard(card.id)">Remove</button>
+    </div>
+    <button (click)="newCard()">Add card</button>
+</div>
