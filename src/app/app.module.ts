@@ -8,11 +8,13 @@ import { NavDrawerComponent } from './UI-components/nav-drawer/nav-drawer.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptorProviders } from './core/http-interceptors';
 import { SharedModule } from './shared/shared.module';
+import { AppBarComponent } from './UI-components/app-bar/app-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavDrawerComponent,
+    AppBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,10 @@
+<app-app-bar 
+    [loggedIn]="(loggedIn$ | async)"
+    (navToggled)="toggleNav()"
+    (home)="goToHome()"
+    (searchClicked)="openSearch()"
+    (cart)="goToCart()"></app-app-bar>
+
 <app-nav-drawer></app-nav-drawer>
 
 <router-outlet></router-outlet>

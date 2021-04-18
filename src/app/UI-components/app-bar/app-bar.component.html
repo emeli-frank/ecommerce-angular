@@ -1,0 +1,10 @@
+<div class="app-bar-container">
+    <button mat-icon-button (click)="toggleNav()"><mat-icon>menu</mat-icon></button>
+    <div (click)="goToHome()" matRipple class="app-bar-title">
+        <span>Store</span>
+    </div>
+    <div class="app-bar-actions">
+        <button mat-icon-button (click)="search()"><mat-icon>search</mat-icon></button>
+        <button mat-icon-button (click)="goToCart()" *ngIf="loggedIn"><mat-icon>shopping_cart</mat-icon></button>
+    </div>
+</div>
