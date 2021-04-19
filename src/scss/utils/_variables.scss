@@ -1,0 +1,43 @@
+@import '~@angular/material/theming';
+
+$my-orange-palette: (
+    50 : #fff5e2,
+    100 : #ffe6b6,
+    200 : #ffd585,
+    300 : #fec454,
+    400 : #feb72f,
+    500 : #feaa0a,
+    600 : #fea309,
+    700 : #fe9907,
+    800 : #fe9005,
+    900 : #fd7f03,
+    A100 : #ffffff,
+    A200 : #fff7f1,
+    A400 : #ffdbbe,
+    A700 : #ffcda4,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$primary-palette: mat-palette($my-orange-palette);
+$accent-palette: mat-palette($mat-pink, 100, 500, A100);
+$warn-palette: mat-palette($mat-lime);
+
+// dark colors
+$dark-blue-1: #131a25;
+$dark-blue-2: #1d2637;
+$dark-blue-3: #273248;
+$dark-blue-4: #414b5e;

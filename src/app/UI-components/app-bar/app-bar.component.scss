@@ -1,9 +1,14 @@
+@import '~@angular/material/theming';
+@import '../../../scss/utils/variables';
+
 .app-bar-container {
     display: flex;
     height: 56px;
     align-items: center;
     padding-right: 5px;
     padding-left: 5px;
+    color: mat-color($primary-palette);
+    background-color: $dark-blue-1;
 }
 
 .app-bar-title {

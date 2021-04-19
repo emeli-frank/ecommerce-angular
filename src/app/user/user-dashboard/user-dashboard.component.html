@@ -11,7 +11,7 @@
     <div *ngIf="!address">
         No default shipping address information
 
-        <button (click)="updateAddress()">Create</button>
+        <button mat-flat-button color="primary" (click)="updateAddress()">Create</button>
     </div>
 
     <div *ngIf="address">

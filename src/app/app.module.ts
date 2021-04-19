@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptorProviders } from './core/http-interceptors';
 import { SharedModule } from './shared/shared.module';
 import { AppBarComponent } from './UI-components/app-bar/app-bar.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -26,4 +27,9 @@ import { AppBarComponent } from './UI-components/app-bar/app-bar.component';
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // adding class so that dark theme can affect overlay components
+  /* constructor(overlayContainer: OverlayContainer) {
+      overlayContainer.getContainerElement().classList.add('app-dark-theme');
+  } */
+}
