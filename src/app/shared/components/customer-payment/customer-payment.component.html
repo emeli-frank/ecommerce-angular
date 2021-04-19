@@ -1,7 +1,18 @@
 <div>
-    <div *ngFor="let card of cards">
-        {{card.name}} 
-        <button (click)="deleteCard(card.id)">Remove</button>
+    <div *ngFor="let card of cards" class="d-flex my-4">
+        <mat-icon svgIcon="mastercard"></mat-icon>
+        <div class="flex-grow-1 ms-3">
+            <div>{{card.number}}</div>
+            <div>{{card.name}}</div>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteCard(card.id)">Remove</button>
+        </mat-menu>
+
     </div>
-    <button (click)="newCard()">Add card</button>
+
+    <div class="mt-5"> <!-- button group -->
+        <button mat-button color="primary" (click)="newCard()">Add card</button>
+    </div>
 </div>

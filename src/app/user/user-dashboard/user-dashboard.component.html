@@ -1,23 +1,65 @@
-<div>{{user | json}}</div>
-
-<button (click)="edit()">Edit</button>
-
-<app-customer-payment 
-    [cards]="cards" 
-    (created)="newCard($event)" 
-    (deleted)="deleteCard($event)"></app-customer-payment>
-
-<div>
-    <div *ngIf="!address">
-        No default shipping address information
-
-        <button mat-flat-button color="primary" (click)="updateAddress()">Create</button>
+<section class="personal-info px-3">
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            <h1 class="typo-color-primary mb-1">{{user.firstName}}</h1>
+            <h1 class="typo-color-primary ms-5 mb-2">{{user.lastName}}</h1>
+        </div>
+        <button mat-icon-button (click)="editPersonalInfo()"><mat-icon>create</mat-icon></button>
     </div>
+    <span style="color: rgba(225,225,225,0.5);">{{user.email}}</span>
+</section>
 
-    <div *ngIf="address">
-        {{ address | json}}
+<app-card1 [circleIconName]="'payment'" class="mx-3 mb-5" style="overflow: auto;">
+    <div class="px-4 py-4 payment-card">
+        <h1 class="typo-color-primary">Payment</h1>
 
-        <button (click)="updateAddress(address)">Edit</button>
-        <button (click)="deleteAddress()">Delete</button>
+        <app-customer-payment 
+            [cards]="cards" 
+            (created)="newCard($event)" 
+            (deleted)="deleteCard($event)"></app-customer-payment>
     </div>
-</div>
+</app-card1>
+
+<app-card1 [circleIconName]="'place'" class="mx-3 mb-5 typo-color-secondary" [circleColor]="'light'">
+    <div class="px-4 py-4 address-card">
+        <div class="d-flex mb-3">
+            <h1 class="flex-grow-1">Address</h1>
+            <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="updateAddress(address)">Edit</button>
+                <button mat-menu-item (click)="deleteAddress()">Delete</button>
+            </mat-menu>
+        </div>
+
+        <div *ngIf="address">
+            <div class="address-item">
+                <div>COUNTRY</div>
+                <div>{{address.country}}</div>
+            </div>
+            <div class="address-item">
+                <div>STATE</div>
+                <div>{{address.state}}</div>
+            </div>
+            <div class="address-item">
+                <div>CITY</div>
+                <div>{{address.city}}</div>
+            </div>
+            <div class="address-item">
+                <div>POSTAL CODE</div>
+                <div>{{address.postalCode}}</div>
+            </div>
+            <div class="address-item">
+                <div>ADDRESS</div>
+                <div>{{address.address}}</div>
+            </div>
+        </div>
+
+        <div *ngIf="!address">
+            No default shipping address information
+        </div>
+    </div>
+</app-card1>
+
+<app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5" [circlePosition]="'bottom'">
+    <div class="px-4 py-4 order-card" style="height: 300px;"></div>
+</app-card1>

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { CreditCardDialogComponent } from 'src/app/user/credit-card-dialog/credit-card-dialog.component';
@@ -17,7 +19,12 @@ export class CustomerPaymentComponent implements OnInit, OnDestroy {
   @Input() cards: CreditCard[] = [];
   dialogsub: Subscription;
 
-  constructor(private dialog: MatDialog, private ns: NotificationService) { }
+  constructor(private dialog: MatDialog, private ns: NotificationService, 
+    iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'mastercard',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/icons/mastercard.svg'));
+  }
 
   ngOnInit(): void {
     console.log(this.cards);

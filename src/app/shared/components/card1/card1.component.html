@@ -1,0 +1,11 @@
+<div class="card-container">
+    <div *ngIf="circleIconName && circlePosition=='top'" [class.color-primary]="circleColor=='primary'" [class.color-light]="circleColor=='light'" class="card-circle card-circle-top">
+        <mat-icon>{{circleIconName}}</mat-icon>
+    </div>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+    <div *ngIf="circleIconName && circlePosition=='bottom'" [class.color-primary]="circleColor=='primary'" [class.color-light]="circleColor=='light'" class="card-circle card-circle-bottom">
+        <mat-icon>{{circleIconName}}</mat-icon>
+    </div>
+</div>

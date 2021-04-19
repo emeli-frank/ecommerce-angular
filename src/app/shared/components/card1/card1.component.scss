@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+@import '../../../../scss/utils/variables';
+
+$icon-radius: 25;
+
+:host {
+    display: block;
+}
+
+.card-container {
+    
+}
+
+.content {
+    border-radius: 10px;
+    overflow: hidden; // very important because the border-radius shape has cut out child element's sharp edges.
+    width: 100%;
+}
+
+.card-circle {
+    width: $icon-radius * 2px;
+    height: $icon-radius * 2px;
+    border-radius:$icon-radius * 1px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark-blue-2;
+}
+
+.card-circle-top {
+    margin-bottom: $icon-radius * -1px;
+}
+
+.card-circle-bottom {
+    margin-top: $icon-radius * -1px;
+}
+
+.color-primary {
+    background-color: mat-color($primary-palette);
+}
+
+.color-light {
+    background-color: #ffffff;
+}

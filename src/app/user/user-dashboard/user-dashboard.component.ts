@@ -60,7 +60,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
     this.dialogsub?.unsubscribe();
   }
 
-  edit() {
+  editPersonalInfo() {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
       data: this.user,
     });
