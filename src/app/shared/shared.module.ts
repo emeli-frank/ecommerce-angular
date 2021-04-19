@@ -12,6 +12,8 @@ import { WaitComponent } from './components/wait/wait.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { CustomerPaymentComponent } from './components/customer-payment/customer-payment.component';
 import { AddressFormDialogComponent } from './components/address-form-dialog/address-form-dialog.component';
+import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { BackdropComponent } from './components/backdrop/backdrop.component';
 
 
 
@@ -26,6 +28,8 @@ import { AddressFormDialogComponent } from './components/address-form-dialog/add
     LoadingComponent,
     CustomerPaymentComponent,
     AddressFormDialogComponent,
+    UserAvatarComponent,
+    BackdropComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +48,8 @@ import { AddressFormDialogComponent } from './components/address-form-dialog/add
     AlertDialogComponent,
     LoadingComponent,
     CustomerPaymentComponent,
+    UserAvatarComponent,
+    BackdropComponent,
   ]
 })
 export class SharedModule { }

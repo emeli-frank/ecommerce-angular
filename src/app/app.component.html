@@ -1,10 +1,22 @@
-<app-app-bar 
-    [loggedIn]="(loggedIn$ | async)"
-    (navToggled)="toggleNav()"
-    (home)="goToHome()"
-    (searchClicked)="openSearch()"
-    (cart)="goToCart()"></app-app-bar>
+<header>
+    <app-app-bar 
+        [loggedIn]="(loggedIn$ | async)"
+        (navToggled)="toggleNav()"
+        (home)="goToHome()"
+        (searchClicked)="openSearch()"
+        (cart)="goToCart()"></app-app-bar>
+    <mat-progress-bar *ngIf="loadingPage" color="primary" mode="indeterminate"></mat-progress-bar>
+</header>
 
-<app-nav-drawer></app-nav-drawer>
+<div id="content">
+    <div [@navSlideInandOut] *ngIf="navOpened" class="nav-drawer-container">
+        <app-nav-drawer [user$]="user$" (clicked)="closeNav()"></app-nav-drawer>
+    </div>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="navOpened" class="nav-drawer-backdrop">
+    <app-backdrop (clicked)="closeNav()"></app-backdrop>
+</div>
+

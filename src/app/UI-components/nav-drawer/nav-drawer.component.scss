@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+@import '../../../scss/utils/variables';
+
+$left-padding: 16;
+
+.nav-drawer-container {
+    background-color: $dark-blue-1;
+    height: 100%;
+}
+
+.nav-header {
+    padding: 38px $left-padding * 1px $left-padding * 1px $left-padding * 1px;
+}
+
+.user-names {
+    font-weight: 500;
+    margin-bottom: 3px;
+    margin-top: 20px;
+}
+
+.user-email {
+    font-size: 14px;
+    color: $light-color-2;
+}
+
+.nav-items {
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    list-style: none;
+}
+
+.nav-items > * {
+    outline: none;
+    margin: 0;
+    padding: 0;
+
+    height: 48px;
+    width: 95%;
+    border-radius: 0 20px 20px 0;
+    padding-left: 26px;
+    padding-right: 26px;
+
+    
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    
+    cursor: default; /* set to prevent the click highlight on mobile, reset to pointer for desktop */
+}
+
+.nav-items * > span {
+    color: inherit;
+    /* height: 40px; */
+    /* display: block; */
+    /* text-decoration: none; */
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-items *.active {
+    background-color: $dark-blue-2;
+    color: mat-color($primary-palette);
+}
+
+.nav-items .nav-link-icon {
+    margin-right: 16px;
+    font-size: 20px;
+}
+
+#nav-items a:focus {
+    background-color: $dark-blue-2;
+}

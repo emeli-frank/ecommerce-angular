@@ -1,17 +1,56 @@
-<ul>
-    <li routerLink="/">Home</li>
+<div class="nav-drawer-container">
+    <div *ngIf="loggedIn" class="nav-header">
+        <app-user-avatar [initials]="userInitials"></app-user-avatar>
+    
+        <h1 class="user-names">Samwise Gemgee</h1>
+        <p class="user-email">sam.gemgee@gmail.com</p>
+    </div>
 
-    <li routerLink="/catalog">Catalog</li>
+    <div *ngIf="!loggedIn" style="height: 50px"></div>
+    
+    <ul class="nav-items">    
+        <li routerLink="/catalog" routerLinkActive="active" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">assignment</mat-icon>
+                <span>Catalog</span>
+            </span>
+        </li>
+    
+        <li routerLink="/user" routerLinkActive="active" *ngIf="loggedIn" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">person_outline</mat-icon>
+                <span>Dashboard</span>
+            </span>
+        </li>
+    
+        <li routerLink="/cart" routerLinkActive="active" *ngIf="loggedIn" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">shopping_cart</mat-icon>
+                <span>Cart</span>
+            </span>
+        </li>
+    
+        <li routerLink="/login" routerLinkActive="active" *ngIf="!loggedIn" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">lock_open</mat-icon>
+                <span>Login</span>
+            </span>
+        </li>
 
-    <li routerLink="/user" *ngIf="loggedIn">Dashboard</li>
+        <li (click)="logout()" *ngIf="loggedIn" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">lock_outline</mat-icon>
+                <span>Logout</span>
+            </span>
+        </li>
 
-    <li routerLink="/cart" *ngIf="loggedIn">Cart</li>
-
-    <li routerLink="/login" *ngIf="!loggedIn">Login</li>
-
-    <li (click)="logout()" *ngIf="loggedIn">Logout</li>
-
-    <li routerLink="/sign-up" *ngIf="!loggedIn">Sign up</li>
-</ul>
+        <li routerLink="/sign-up" routerLinkActive="active" *ngIf="!loggedIn" matRipple (click)="emitClick()">
+            <span>
+                <mat-icon class="nav-link-icon">person_add_alt</mat-icon>
+                <span>Sign up</span>
+            </span>
+        </li>
+    </ul>
+</div>
 
 <h1>Logged in? => {{loggedIn}}</h1>
