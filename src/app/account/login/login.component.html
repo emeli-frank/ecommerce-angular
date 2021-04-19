@@ -7,5 +7,7 @@
         <input [formControl]="password" placeholder="password">
     </div>
 
-    <button (click)="login()">Submit</button>
+    <div *ngIf="failedLoggin">Email and password did not match.</div>
+
+    <button mat-flat-button color="primary" (click)="login()" [disabled]="logginIn">{{logginIn ? 'Loggin in...' : 'Login'}}</button>
 </form>

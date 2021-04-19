@@ -40,13 +40,10 @@ $left-padding: 16;
     border-radius: 0 20px 20px 0;
     padding-left: 26px;
     padding-right: 26px;
-
-    
     text-decoration: none;
     display: flex;
     align-items: center;
-    
-    cursor: default; /* set to prevent the click highlight on mobile, reset to pointer for desktop */
+    cursor: pointer;
 }
 
 .nav-items * > span {
@@ -70,6 +67,6 @@ $left-padding: 16;
     font-size: 20px;
 }
 
-#nav-items a:focus {
+.nav-items > *:focus, .nav-items > *:active {
     background-color: $dark-blue-2;
 }

@@ -77,7 +77,6 @@ export class AuthService {
   }
 
   private storeUserWithToken(user: User, token: string) {
-    alert();
     if (!user) {
       localStorage.setItem(this.storageKeys.user, JSON.stringify(null));
     } else {
