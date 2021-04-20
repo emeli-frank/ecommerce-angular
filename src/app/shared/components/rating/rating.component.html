@@ -1,0 +1,7 @@
+<div class="d-flex align-items-center">
+    <div class="d-flex">
+        <mat-icon *ngFor="let rating of ratings" [class.active]="rating" class="star">star_rate</mat-icon>
+    </div>
+
+    <span *ngIf="number > 0" class="ms-2">({{number}})</span>
+</div>

@@ -15,6 +15,8 @@ import { AddressFormDialogComponent } from './components/address-form-dialog/add
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { BackdropComponent } from './components/backdrop/backdrop.component';
 import { Card1Component } from './components/card1/card1.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 
 
@@ -32,6 +34,8 @@ import { Card1Component } from './components/card1/card1.component';
     UserAvatarComponent,
     BackdropComponent,
     Card1Component,
+    ProductCardComponent,
+    RatingComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +57,8 @@ import { Card1Component } from './components/card1/card1.component';
     UserAvatarComponent,
     BackdropComponent,
     Card1Component,
+    ProductCardComponent,
+    RatingComponent,
   ]
 })
 export class SharedModule { }

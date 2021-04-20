@@ -11,7 +11,7 @@
 
 <app-card1 [circleIconName]="'payment'" class="mx-3 mb-5" style="overflow: auto;">
     <div class="px-4 py-4 payment-card">
-        <h1 class="typo-color-primary">Payment</h1>
+        <h1 class="typo-color-primary card-head mb-5">Payment</h1>
 
         <app-customer-payment 
             [cards]="cards" 
@@ -23,7 +23,7 @@
 <app-card1 [circleIconName]="'place'" class="mx-3 mb-5 typo-color-secondary" [circleColor]="'light'">
     <div class="px-4 py-4 address-card">
         <div class="d-flex mb-3">
-            <h1 class="flex-grow-1">Address</h1>
+            <h1 class="flex-grow-1 card-head">Address</h1>
             <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="updateAddress(address)">Edit</button>
@@ -60,6 +60,14 @@
     </div>
 </app-card1>
 
-<app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5" [circlePosition]="'bottom'">
-    <div class="px-4 py-4 order-card" style="height: 300px;"></div>
+<app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5 typo-color-secondary" [circlePosition]="'bottom'">
+    <div class="px-4 py-4 order-card">
+        <h1 class="flex-grow-1 card-head mb-5">Recent purchases</h1>
+
+        <app-product-card>
+            <button action-object mat-mini-fab color="primary">
+                <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+        </app-product-card>
+    </div>
 </app-card1>

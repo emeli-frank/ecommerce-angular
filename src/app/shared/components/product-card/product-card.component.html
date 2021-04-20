@@ -1,0 +1,21 @@
+<div class="image-container">
+    <img src="./../../../../assets/images/sample/sample-image.jpg">
+    <!-- <button mat-flat-button color="primary" class="action-button"><mat-icon>add_shopping_cart</mat-icon></button> -->
+    <!-- <button mat-icon-button color="primary" class="action-button"><mat-icon>add_shopping_cart</mat-icon></button> -->
+    <div class="action-object-container">
+        <ng-content select="[action-object]"></ng-content>
+    </div>
+</div>
+
+<div class="name mt-3 mb-4">
+    Self-heating graphene jacket
+</div>
+
+<div class="price d-flex align-items-center">
+    <span class="current">$250</span>
+    <span class="old ms-2">$350</span>
+</div>
+
+<div class="rating">
+    <app-rating [value]="3" [number]="3"></app-rating>
+</div>
