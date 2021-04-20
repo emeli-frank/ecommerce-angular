@@ -17,6 +17,9 @@ import { BackdropComponent } from './components/backdrop/backdrop.component';
 import { Card1Component } from './components/card1/card1.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { ScrollDotsComponent } from './scroll-dots/scroll-dots.component';
+import { Card2Component } from './components/card2/card2.component';
 
 
 
@@ -36,6 +39,9 @@ import { RatingComponent } from './components/rating/rating.component';
     Card1Component,
     ProductCardComponent,
     RatingComponent,
+    ProductCarouselComponent,
+    ScrollDotsComponent,
+    Card2Component,
   ],
   imports: [
     CommonModule,
@@ -59,6 +65,9 @@ import { RatingComponent } from './components/rating/rating.component';
     Card1Component,
     ProductCardComponent,
     RatingComponent,
+    ProductCarouselComponent,
+    ScrollDotsComponent,
+    Card2Component,
   ]
 })
 export class SharedModule { }

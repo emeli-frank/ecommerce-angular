@@ -1,0 +1,73 @@
+// buttons
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 0 12px 0;
+}
+
+.button-group > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-group.align-end {
+    justify-content: flex-end;
+    & > * {
+        margin-left: 10px;
+    }
+}
+
+.button-group > *:first-child {
+    margin-left: 0px;
+}
+
+.button-group > *:last-child {
+    margin-right: 0px;
+}
+
+.button-group.align-center {
+    justify-content: center;
+    & > * {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+/* .button-group.align-center > * {
+    margin-left: 5px;
+    margin-right: 5px;
+} */
+
+.button-group.vertical {
+    flex-direction: column;
+    & > * { 
+        height: 48px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    & > *:first-child {  
+        margin-top: 0;
+    }
+
+    & > *:last-child {  
+        margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+
+        & > * { 
+            height: unset;
+            width: unset;
+            margin: unset;
+        }
+
+        &.align-end {
+            justify-content: flex-end;
+            & > * {
+                margin-left: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import '../../../../scss/utils/variables';
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color :mat-color($primary-palette);
+}
+
+.indicator {
+    width: 4px;
+    background-color: mat-color($primary-palette);
+    height: 40px;
+    margin-right: 16px;
+}
+
+.content {
+    border-radius: 10px;
+    background-color: $dark-blue-3;
+}

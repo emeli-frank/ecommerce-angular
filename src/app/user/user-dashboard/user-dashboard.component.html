@@ -60,7 +60,7 @@
     </div>
 </app-card1>
 
-<app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5 typo-color-secondary" [circlePosition]="'bottom'">
+<!-- <app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5 typo-color-secondary" [circlePosition]="'bottom'">
     <div class="px-4 py-4 order-card">
         <h1 class="flex-grow-1 card-head mb-5">Recent purchases</h1>
 
@@ -69,5 +69,13 @@
                 <mat-icon>add_shopping_cart</mat-icon>
             </button>
         </app-product-card>
+    </div>
+</app-card1> -->
+
+<app-card1 [circleIconName]="'assignment'" class="mx-3 mb-5 typo-color-secondary" [circlePosition]="'bottom'">
+    <div class="px-4 py-4 order-card">
+        <h1 class="flex-grow-1 card-head mb-5">Recent purchases</h1>
+
+        <app-product-carousel [products]="recentPurchases"></app-product-carousel>
     </div>
 </app-card1>

@@ -1,0 +1,36 @@
+.images-container {
+    width: 100%;
+    position: relative;
+    // aspect-ratio: 2/3;
+}
+
+.image {
+    height: 100%;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    img {
+        object-fit: cover;
+    }
+}
+
+.direction-icon {
+    position: absolute;
+    top: calc((100% / 2) - 20px);
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
+}
+
+.card-title {
+    font-size: 18px;
+    letter-spacing: 0.5em;
+    margin-bottom: 0;
+    font-weight: 400;
+}

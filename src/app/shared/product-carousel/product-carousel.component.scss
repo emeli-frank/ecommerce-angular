@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.container {
+    display: flex;
+    width: max-content;
+
+    & > * {
+        width: 200px;
+        margin: 0 16px;
+        margin-bottom: 32px;
+    }
+}

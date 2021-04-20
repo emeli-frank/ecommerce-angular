@@ -9,6 +9,7 @@ import { AddressFormDialogComponent } from 'src/app/shared/components/address-fo
 import { CreditCard } from 'src/app/shared/models/credit-card';
 import { Address } from 'src/app/shared/models/interfaces/address';
 import { Order } from 'src/app/shared/models/order';
+import { Product } from 'src/app/shared/models/product';
 import { User } from 'src/app/shared/models/user';
 import { CreditCardDialogComponent } from '../credit-card-dialog/credit-card-dialog.component';
 import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
@@ -25,6 +26,7 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   cards: CreditCard[] = [];
   address: Address;
   orders: Order[];
+  recentPurchases: Product[] = [];
 
   constructor(
     private authService: AuthService, 
@@ -54,6 +56,15 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
 
     // get orders
     this.custService.getCustOrders(this.user.id).subscribe();
+
+
+    // todo:: change
+    for (let i = 0; i < 5; i++) {
+      this.recentPurchases.push(Product.fromJSON({
+        name: "Test product",
+        price: {current: 250},
+      }));
+    }
   }
 
   ngOnDestroy(): void {

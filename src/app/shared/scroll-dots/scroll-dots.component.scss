@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+@import '../../../scss/utils/variables';
+
+:host {
+    display: inline-flex;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: grey;
+    margin-right: 5px;
+
+    &.active {
+        background-color: mat-color($primary-palette);
+    }
+}

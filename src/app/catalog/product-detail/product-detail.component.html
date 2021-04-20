@@ -1,3 +1,50 @@
-{{product | json}}
+<div class="typo-color-primary px-3 mb-5">FASHION</div>
 
-<button (click)="addItemToCart()">Add to card</button>
+<div class="images-container">
+    <button action-object mat-mini-fab color="primary" class="direction-icon left">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <button action-object mat-mini-fab color="primary" class="direction-icon right">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+
+    <div class="image">
+        <img src="../../../assets/images/sample/sample-image.jpg">
+    </div>
+</div>
+
+<div class="mx-3 py-3">
+    <div class="d-flex justify-content-center mb-3">
+        <app-scroll-dots [value]="3" [number]="5"></app-scroll-dots>
+    </div>
+
+    <h2 class="typo-color-primary mb-4">{{product.name}}</h2>
+
+    <div class="d-flex align-content-center mb-2">
+        <span class="typo-color-primary" style="font-size: 24px;">${{product.price.current}}</span>
+        <span *ngIf="product.price.old" class="ms-3 typo-color-primary" style="font-size: 14px; text-decoration: line-through;">
+            ${{product.price.old}}
+        </span>
+        <app-rating [value]="3" [number]="3" class="ms-4"></app-rating>
+    </div>
+
+    <div class="d-flex align-content-center mb-3">
+        <mat-icon>local_shipping</mat-icon> 
+        <span class="ms-2">Shipping: $10</span>
+    </div>
+
+    <div class="button-group vertical" style="margin-bottom: 80px;">
+        <button mat-flat-button color="primary" (click)="addItemToCart()"><mat-icon>add_shopping_cart</mat-icon> Add to cart</button>
+        <button mat-flat-button>Buy now</button>
+    </div>
+
+    <app-card2>
+        <div title="">
+            <h2 class="card-title">DESCRIPTION</h2>
+        </div>
+        <div class="typo-color-primary">
+            {{product.description}}
+        </div>
+    </app-card2>
+</div>

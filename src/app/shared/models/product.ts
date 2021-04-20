@@ -5,9 +5,9 @@ export interface ProductJSONData {
     name: string;
     category_id?: number;
     price: Price;
-    rating: number,
-    description: string;
-    quantity: number;
+    rating?: number,
+    description?: string;
+    quantity?: number;
 }
 
 export class Product {
