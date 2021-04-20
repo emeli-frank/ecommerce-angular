@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class AppBarComponent implements OnInit {
   @Input() loggedIn: boolean = false;
+  @Input() numberOfCartItems: number = 0;
   @Output() navToggled = new EventEmitter();
   @Output() home = new EventEmitter();
   @Output() searchClicked = new EventEmitter();

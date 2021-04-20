@@ -107,23 +107,4 @@ export class CustomerService {
 
     return result$;
   }
-
-  addToCard(userId: number, productId: number): Observable<any> {
-    return this.http.post(
-      `${environment.apiBaseUrl}/customers/${userId}/cart`,
-      {product_id: productId},
-    )
-  }
-
-  getCartItems(custId: number): Observable<CartItem[]> {
-    return this.http.get(`${environment.apiBaseUrl}/customers/${custId}/cart`)
-      .pipe(
-        map((res: any) => {
-          return res.map(r => <CartItem>{
-            quantity: r.quantity,
-            product: Product.fromJSON(r.product),
-          });
-        }),
-      );
-  }
 }

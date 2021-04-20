@@ -1,6 +1,7 @@
 <header>
     <app-app-bar 
         [loggedIn]="(loggedIn$ | async)"
+        [numberOfCartItems]="(numberOfCartItems$ | async)"
         (navToggled)="toggleNav()"
         (home)="goToHome()"
         (searchClicked)="openSearch()"

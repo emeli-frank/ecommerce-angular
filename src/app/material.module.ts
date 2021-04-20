@@ -31,6 +31,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatStepperModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatBadgeModule,
   ],
   exports: [
     MatCheckboxModule, 
@@ -106,6 +108,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatStepperModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatBadgeModule,
   ]
 })
 export class MaterialModule { }

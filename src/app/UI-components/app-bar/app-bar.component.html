@@ -5,6 +5,12 @@
     </div>
     <div class="app-bar-actions">
         <button mat-icon-button (click)="search()"><mat-icon>search</mat-icon></button>
-        <button mat-icon-button (click)="goToCart()" *ngIf="loggedIn"><mat-icon>shopping_cart</mat-icon></button>
+        <button mat-icon-button (click)="goToCart()" *ngIf="loggedIn">
+            <mat-icon 
+            [matBadge]="numberOfCartItems" 
+            matBadgeColor="primary" 
+            matBadgeSize="small" 
+            [matBadgeHidden]="numberOfCartItems==0">shopping_cart</mat-icon>
+        </button>
     </div>
 </div>

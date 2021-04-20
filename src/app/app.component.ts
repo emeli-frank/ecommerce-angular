@@ -1,9 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
+import { CartService } from './core/services/cart.service';
 import { User } from './shared/models/user';
 
 @Component({
@@ -36,8 +37,9 @@ export class AppComponent {
   loggedIn$: Observable<boolean>;
   loadingPage: boolean = false;
   navOpened: boolean = false;
+  numberOfCartItems$: Observable<number>;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private cartService: CartService) {
     this.user$ = this.authService.user$;
     this.loggedIn$ = this.authService.user$.pipe(
       map(user => {
@@ -66,6 +68,17 @@ export class AppComponent {
         }
       }
     });
+
+    // set cart item
+    this.user$.subscribe(user => {
+      if (!user) {
+        // clean up. User has logged out
+        this.numberOfCartItems$ = EMPTY;
+      } else {
+        // user is logged in
+        this.numberOfCartItems$ = this.cartService.getCartItemCount(user.id);
+      }
+    })
   }
 
   toggleNav() {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { CustomerService } from 'src/app/core/services/customer.service';
+import { CartService } from 'src/app/core/services/cart.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Product } from 'src/app/shared/models/product';
 import { User } from 'src/app/shared/models/user';
@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
 
   constructor(private route: ActivatedRoute, private ns: NotificationService, 
-    private custService: CustomerService, private authService: AuthService) { }
+    private authService: AuthService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.user = this.authService.user;
@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addItemToCart() {
-    this.custService.addToCard(this.user.id, this.product.id).subscribe({
+    this.cartService.addToCard(this.user.id, this.product.id).subscribe({
       next: _ => {
         this.ns.snackbar('Added to card');
       },
