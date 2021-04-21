@@ -29,4 +29,10 @@ export class CatalogComponent implements OnInit {
     this.router.navigate(['/products/' + productId], {relativeTo: this.route});
   }
 
+  addToCart(event: PointerEvent) {
+    // event.preventDefault();
+    event.stopPropagation();
+    console.log(event);
+  }
+
 }

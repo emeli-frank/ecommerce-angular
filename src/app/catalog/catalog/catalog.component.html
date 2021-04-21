@@ -1,1 +1,12 @@
-<app-product-list [products]="products" (clicked)="onProductClick($event)"></app-product-list>
+<!-- <div class="px-2">
+    <app-product-list [products]="products" (clicked)="onProductClick($event)"></app-product-list>
+</div> -->
+
+<app-product-list>
+    <app-product-card *ngFor="let product of products" (click)="onProductClick(product.id)" class="product">
+        <button action-object mat-mini-fab (click)="addToCart($event)" color="primary" style="transform: scale(.9);">
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+    </app-product-card>
+</app-product-list>
+

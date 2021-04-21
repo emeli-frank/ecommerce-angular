@@ -1,0 +1,11 @@
+/* This could not be placed in component style because of funny behaviour of
+ng-content and styling */
+.product {
+    flex: 1 46%;
+    max-width: 50%; /* not sure how this rule holds up */
+    padding: 0 10px;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    padding-bottom: 24px;
+    cursor: pointer;
+}

@@ -8,38 +8,44 @@
 .image-container {
     border-radius: 10px;
     overflow: hidden;
-    width: 100%;
-    aspect-ratio: 2/3;
+    // width: 100%;
+    // aspect-ratio: 2/3;
     box-shadow: 0px 3px 5px 1px rgb(0 0 0 / 30%);
     position: relative;
 }
 
 .action-object-container {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
 }
 
 .image-container > img {
     width: 100%;
-    -o-object-fit: cover;
+    /* -o-object-fit: cover;
     object-fit: cover;
-    height: fit-content;
+    height: fit-content; */
 }
 
 .price {
     .current {
-        font-size: 24px;
-        font-weight: 500;
+        font-size: 18px;
+        // font-weight: 500;
+        color: #feaa0a;
     }
 
     .old {
         text-decoration: line-through;
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
 .name {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
+    text-align: center;
+}
+
+.rating {
+    transform: scale(0.6);
 }

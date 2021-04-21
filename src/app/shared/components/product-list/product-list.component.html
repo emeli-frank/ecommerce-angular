@@ -1,3 +1,16 @@
-<div *ngFor="let product of products" (click)="emitClick(product.id)">
+<!-- <div *ngFor="let product of products" (click)="emitClick(product.id)">
     {{ product.name }}
-</div>
+</div> -->
+
+<!-- <div *ngFor="let product of products" (click)="emitClick(product.id)" class="product-container">
+    <app-product-card>
+        <button action-object mat-mini-fab color="primary" (click)="addToCart($event)" style="transform: scale(.9);">
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+    </app-product-card>
+</div> -->
+
+
+
+
+<ng-content select=".product"></ng-content>
