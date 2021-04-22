@@ -8,7 +8,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 
 const routes: Routes = [
   {
-    path:'catalog',
+    path:'products',
     component: CatalogComponent,
     resolve: {products: ProductListResolverService},
   },

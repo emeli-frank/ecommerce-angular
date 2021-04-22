@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrationService } from 'src/app/core/services/registration.service';
 import { Roles } from 'src/app/shared/enums/roles.enum';
 import { Customer } from 'src/app/shared/models/user';
@@ -8,11 +8,13 @@ import { Customer } from 'src/app/shared/models/user';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  host: {'class': 'pt-page-content'},
 })
 export class SignUpComponent implements OnInit {
 
   form: FormGroup;
+  returnUrl: string;
 
   get firstName() { return this.form.get('firstName') }
 
@@ -24,7 +26,7 @@ export class SignUpComponent implements OnInit {
 
   get confirmPassword() { return this.form.get('confirmPassword') }
 
-  constructor(private router: Router, private registrationService: RegistrationService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -50,6 +52,10 @@ export class SignUpComponent implements OnInit {
         Validators.required,
       ])
     }, passwordMatchValidator,);
+
+    // set return url
+    this.returnUrl = this.route.snapshot.queryParamMap.get('return-url') || null;
+    console.log(this.returnUrl);
   }
 
   submit() {
@@ -64,13 +70,17 @@ export class SignUpComponent implements OnInit {
 
     this.registrationService.register(customer, password).subscribe({
       next: _ => {
-        console.log('created');
-        alert('account created. You will be redirected to a login page');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], {queryParams: {"return-url": this.returnUrl}});
       },
       error: err => {
         console.error(err);
       }
+    });
+  }
+
+  goToLogin() {
+    this.router.navigate(['login'], {
+      queryParams: {'return-url': this.returnUrl}
     });
   }
 

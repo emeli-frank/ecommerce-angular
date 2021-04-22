@@ -1,13 +1,36 @@
-<form [formGroup]="form">
-    <div>
-        <input [formControl]="email" placeholder="email">
-    </div>
+<div class="px-3">
+    <h1 class="mb-5 typo-color-primary">Login</h1>
 
-    <div>
-        <input [formControl]="password" placeholder="password">
-    </div>
+    <form [formGroup]="form">
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>EMAIL</span>
+                <input [formControl]="email" placeholder="email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" errors>
+                    <span *ngIf="email.errors?.required">This field is required</span>
+                    <span *ngIf="email.errors?.maxlength">This field cannot be more than {{email.errors.maxlength.requiredLength}} characters</span>
+                </div>
+            </app-form-field>
+        </div>
 
-    <div *ngIf="failedLoggin">Email and password did not match.</div>
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>PASSWORD</span>
+                <input [formControl]="password" placeholder="********" type="password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" errors>
+                    <span *ngIf="password.errors?.required">This field is required</span>
+                    <span *ngIf="password.errors?.minlength">This field cannot be less than {{password.errors.minlength.requiredLength}} characters</span>
+                    <span *ngIf="password.errors?.maxlength">This field cannot be more than {{password.errors.maxlength.requiredLength}} characters</span>
+                </div>
+            </app-form-field>
+        </div>
 
-    <button mat-flat-button color="primary" (click)="login()" [disabled]="logginIn">{{logginIn ? 'Loggin in...' : 'Login'}}</button>
-</form>
+        <div *ngIf="failedLoggin">Email and password did not match.</div>
+
+        <div class="button-group vertical mt-5">
+            <button mat-flat-button color="primary" (click)="login()" [disabled]="logginIn || !form.valid">{{logginIn ? 'Loggin in...' : 'Login'}}</button>
+        </div>
+
+        <a (click)="goToSignUp()">Don't have an account?</a>
+    </form>
+</div>

@@ -1,45 +1,67 @@
-<form [formGroup]="form">
-    <div>
-        <input [formControl]="firstName" placeholder="firstName">
-        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-            <span *ngIf="firstName.errors?.required">This field is required</span>
-            <span *ngIf="firstName.errors?.maxlength">This field cannot be more than {{firstName.errors.maxlength.requiredLength}} characters</span>
+<div class="px-3">
+    <h1 class="mb-5 typo-color-primary">Sign up</h1>
+
+    <form [formGroup]="form">
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>FIRST NAME</span>
+                <input [formControl]="firstName" placeholder="First name">
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" errors>
+                    <span *ngIf="firstName.errors?.required">This field is required</span>
+                    <span *ngIf="firstName.errors?.maxlength">This field cannot be more than {{firstName.errors.maxlength.requiredLength}} characters</span>
+                </div>
+            </app-form-field>
         </div>
-    </div>
 
-    <div>
-        <input [formControl]="lastName" placeholder="lastName">
-        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-            <span *ngIf="lastName.errors?.required">This field is required</span>
-            <span *ngIf="lastName.errors?.maxlength">This field cannot be more than {{lastName.errors.maxlength.requiredLength}} characters</span>
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>LAST NAME</span>
+                <input [formControl]="lastName" placeholder="Last name">
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" errors>
+                    <span *ngIf="lastName.errors?.required">This field is required</span>
+                    <span *ngIf="lastName.errors?.maxlength">This field cannot be more than {{lastName.errors.maxlength.requiredLength}} characters</span>
+                </div>
+            </app-form-field>
         </div>
-    </div>
 
-    <div>
-        <input [formControl]="email" placeholder="email">
-        <div *ngIf="email.invalid && (email.dirty || email.touched)">
-            <span *ngIf="email.errors?.required">This field is required</span>
-            <span *ngIf="email.errors?.maxlength">This field cannot be more than {{email.errors.maxlength.requiredLength}} characters</span>
-            <span *ngIf="email.errors?.email">A valid email is required</span>
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>EMAIL</span>
+                <input [formControl]="email" placeholder="hello@example.com">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" errors>
+                    <span *ngIf="email.errors?.required">This field is required</span>
+                    <span *ngIf="email.errors?.maxlength">This field cannot be more than {{email.errors.maxlength.requiredLength}} characters</span>
+                    <span *ngIf="email.errors?.email">A valid email is required</span>
+                </div>
+            </app-form-field>
         </div>
-    </div>
 
-    <div>
-        <input [formControl]="password" placeholder="password">
-        <div *ngIf="password.invalid && (password.dirty || password.touched)">
-            <span *ngIf="password.errors?.required">This field is required</span>
-            <span *ngIf="password.errors?.minlength">This field cannot be less than {{password.errors.minlength.requiredLength}} characters</span>
-            <span *ngIf="password.errors?.maxlength">This field cannot be more than {{password.errors.maxlength.requiredLength}} characters</span>
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>PASSWORD</span>
+                <input [formControl]="password" placeholder="********" type="password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" errors>
+                    <span *ngIf="password.errors?.required">This field is required</span>
+                    <span *ngIf="password.errors?.minlength">This field cannot be less than {{password.errors.minlength.requiredLength}} characters</span>
+                    <span *ngIf="password.errors?.maxlength">This field cannot be more than {{password.errors.maxlength.requiredLength}} characters</span>
+                </div>
+            </app-form-field>
         </div>
-    </div>
 
-    <div>
-        <input [formControl]="confirmPassword" placeholder="confirmPassword">
-        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
-            <span *ngIf="confirmPassword.errors?.passwordMismatch">Password does not match</span>
+        <div>
+            <app-form-field class="w-100 mb-4 d-block">
+                <span label>CONFIRM PASSWORD</span>
+                <input [formControl]="confirmPassword" placeholder="********" type="password">
+                <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" errors>
+                    <span *ngIf="confirmPassword.errors?.passwordMismatch">Password does not match</span>
+                </div>
+            </app-form-field>
         </div>
-    </div>
 
+        <div class="button-group vertical">
+            <button mat-flat-button color="primary" (click)="submit()" [disabled]="!form.valid">Submit</button>
+        </div>
 
-    <button (click)="submit()" [disabled]="!form.valid">Submit</button>
-</form>
+        <a (click)="goToLogin()">Already have an account?</a>
+    </form>
+</div>

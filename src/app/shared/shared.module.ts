@@ -20,6 +20,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { ScrollDotsComponent } from './scroll-dots/scroll-dots.component';
 import { Card2Component } from './components/card2/card2.component';
+import { FormFieldComponent } from './components/form/form-field/form-field.component';
 
 
 
@@ -42,6 +43,7 @@ import { Card2Component } from './components/card2/card2.component';
     ProductCarouselComponent,
     ScrollDotsComponent,
     Card2Component,
+    FormFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { Card2Component } from './components/card2/card2.component';
     ProductCarouselComponent,
     ScrollDotsComponent,
     Card2Component,
+    FormFieldComponent,
   ]
 })
 export class SharedModule { }

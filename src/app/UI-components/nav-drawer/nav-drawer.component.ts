@@ -21,10 +21,12 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.userInitialSub = this.user$.subscribe(user => {
-      const fn = user.firstName;
-      const ln = user.lastName;
+      if (user) {
+        const fn = user.firstName;
+        const ln = user.lastName;
 
-      this.userInitials = `${fn.charAt(0)}${ln.charAt(0)}`;
+        this.userInitials = `${fn.charAt(0)}${ln.charAt(0)}`;
+      }
     });
   }
 
