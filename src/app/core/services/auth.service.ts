@@ -83,8 +83,8 @@ export class AuthService {
       localStorage.setItem(this.storageKeys.user, JSON.stringify(user.toJSON()));
     }
 
-    this.userSubject.next(user);
     localStorage.setItem(this.storageKeys.token, token);
+    this.userSubject.next(user);
   }
 
   updateUser(user: User) {

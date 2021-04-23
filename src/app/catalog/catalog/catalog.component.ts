@@ -6,7 +6,8 @@ import { Product } from 'src/app/shared/models/product';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
+  host: {'class': 'py-page-content'},
 })
 export class CatalogComponent implements OnInit {
 

@@ -25,7 +25,7 @@
             </app-form-field>
         </div>
 
-        <div *ngIf="failedLoggin">Email and password did not match.</div>
+        <div *ngIf="failedLoggin" class="typo-color-warn">Email and password did not match.</div>
 
         <div class="button-group vertical mt-5">
             <button mat-flat-button color="primary" (click)="login()" [disabled]="logginIn || !form.valid">{{logginIn ? 'Loggin in...' : 'Login'}}</button>

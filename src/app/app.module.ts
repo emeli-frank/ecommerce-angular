@@ -10,12 +10,14 @@ import { httpInterceptorProviders } from './core/http-interceptors';
 import { SharedModule } from './shared/shared.module';
 import { AppBarComponent } from './UI-components/app-bar/app-bar.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { FooterComponent } from './UI-components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavDrawerComponent,
     AppBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

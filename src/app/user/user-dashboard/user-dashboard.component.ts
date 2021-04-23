@@ -17,7 +17,8 @@ import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.co
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  styleUrls: ['./user-dashboard.component.scss'],
+  host: {'class': 'py-page-content'},
 })
 export class UserDashboardComponent implements OnInit, OnDestroy {
 

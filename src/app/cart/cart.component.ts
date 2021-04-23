@@ -5,7 +5,8 @@ import { CartItem } from '../shared/interfaces/cart-item';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  host: {'class': 'py-page-content'},
 })
 export class CartComponent implements OnInit {
 

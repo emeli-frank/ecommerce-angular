@@ -5,3 +5,7 @@
 .typo-color-secondary {
     color: $dark-blue-2;
 }
+
+.typo-color-warn {
+    color: mat-color($warn-palette);
+}

@@ -8,7 +8,7 @@ import { NotificationService } from 'src/app/core/services/notification.service'
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  host: {'class': 'pt-page-content'},
+  host: {'class': 'py-page-content'},
 })
 export class LoginComponent implements OnInit {
 

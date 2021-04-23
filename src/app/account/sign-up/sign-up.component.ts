@@ -9,7 +9,7 @@ import { Customer } from 'src/app/shared/models/user';
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  host: {'class': 'pt-page-content'},
+  host: {'class': 'py-page-content'},
 })
 export class SignUpComponent implements OnInit {
 

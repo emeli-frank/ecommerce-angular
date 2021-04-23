@@ -17,6 +17,10 @@
     <router-outlet></router-outlet>
 </div>
 
+<footer>
+    <app-footer></app-footer>
+</footer>
+
 <div *ngIf="navOpened" class="nav-drawer-backdrop">
     <app-backdrop (clicked)="closeNav()"></app-backdrop>
 </div>
