@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScrollDotsComponent } from './scroll-dots.component';
 
@@ -6,7 +6,7 @@ describe('ScrollDotsComponent', () => {
   let component: ScrollDotsComponent;
   let fixture: ComponentFixture<ScrollDotsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScrollDotsComponent ]
     })

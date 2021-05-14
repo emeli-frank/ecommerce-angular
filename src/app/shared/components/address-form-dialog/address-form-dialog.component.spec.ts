@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AddressFormDialogComponent } from './address-form-dialog.component';
 
@@ -6,7 +6,7 @@ describe('AddressFormDialogComponent', () => {
   let component: AddressFormDialogComponent;
   let fixture: ComponentFixture<AddressFormDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AddressFormDialogComponent ]
     })
