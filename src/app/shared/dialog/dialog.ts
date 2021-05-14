@@ -1,4 +1,4 @@
-import { EventEmitter, Output } from "@angular/core";
+import { EventEmitter, Output, Directive } from "@angular/core";
 
 export interface DialogData {
   primaryButtonLabel?: string;
@@ -7,6 +7,7 @@ export interface DialogData {
   closeButtonLabel?: string;
 }
 
+@Directive()
 export abstract class Dialog {
 
   @Output() done = new EventEmitter<any>();
