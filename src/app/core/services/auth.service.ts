@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user';
 import { environment } from 'src/environments/environment';
 
@@ -17,39 +17,58 @@ export class AuthService {
   };
 
   private userSubject: BehaviorSubject<User>;
-  public user$: Observable<User>;
+  user$: Observable<User>;
 
-  public storageKeys = {
-    user: 'user',
-    token: 'authorization_token'
-  }
+  private userLocalStorageKey = 'user_data';
 
-  get loggedIn(): boolean {
-    return !!this.userSubject.value;
-  }
+  get loggedIn(): boolean { return !!this.userSubject.value; }
+
+  get isLoggedInSnapshot(): boolean { return this.userSubject.value ? true : false; }
+
+  get user(): User { return this.userSubject.value; }
 
   constructor(private http: HttpClient) {
 
-    let user: User;
-    let json = JSON.parse(localStorage.getItem(this.storageKeys.user));
-    if (!!json) {
-      try {
-        user = User.fromJSON(json);
-      } catch (err) {
-        console.error("error creating user");
-        console.error(err);
-      }
-    } else {
-      user = null;
-    }
+    const user: User = this.getLocalUserData().user;
 
     this.userSubject = new BehaviorSubject<User>(user);
     this.user$ = this.userSubject.asObservable();
   }
 
-  public get isLoggedInSnapshot(): boolean { return this.userSubject.value ? true : false; }
+  // get raw user data (user and auth token) from local storage and returns
+  // an object containing user<User> and token<string> or {user: null, token: null}
+  // if there was an error parsing gotten data.
+  private getLocalUserData(): {user: User, token: string} {
+    const data = localStorage.getItem(this.userLocalStorageKey);
+    try {
+      const json = JSON.parse(data);
+      return {user: User.fromJSON(json['user']), token: json['token']};
+    } catch (e) {
+      console.error(e);
+      return {user: null, token: null};
+    }
+  }
 
-  public get user(): User { return this.userSubject.value; }
+  // updates user data in local storage
+  private updateUserLocalData(user: User, token?: string) {
+    if (!user) { // remove user
+      localStorage.setItem(this.userLocalStorageKey, JSON.stringify(null));
+    } else {
+      if (token) { // update user and token
+        const data = {
+          user: user.toJSON(),
+          token: token,
+        }
+        localStorage.setItem(this.userLocalStorageKey, JSON.stringify(data));
+      } else { // update user only
+        const data = {
+          user: user.toJSON(),
+          token: this.getAuthToken(),
+        }
+        localStorage.setItem(this.userLocalStorageKey, JSON.stringify(data));
+      }
+    }
+  }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(
@@ -61,7 +80,7 @@ export class AuthService {
           let user: User;
           try {
             user = User.fromJSON(res.body.user);
-            this.storeUserWithToken(user, res.body.auth_token);
+            this.updateUser(user, res.body.auth_token);
           } catch(err) {
             throwError(err)
           }
@@ -71,25 +90,18 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem(this.storageKeys.user);
-    localStorage.removeItem(this.storageKeys.token);
+    localStorage.removeItem(this.userLocalStorageKey);
     this.userSubject.next(null);
   }
 
-  private storeUserWithToken(user: User, token: string) {
-    if (!user) {
-      localStorage.setItem(this.storageKeys.user, JSON.stringify(null));
-    } else {
-      localStorage.setItem(this.storageKeys.user, JSON.stringify(user.toJSON()));
-    }
+  updateUser(user: User, token?: string) {
+    this.updateUserLocalData(user, token);
 
-    localStorage.setItem(this.storageKeys.token, token);
     this.userSubject.next(user);
   }
 
-  updateUser(user: User) {
-    localStorage.setItem(this.storageKeys.user, JSON.stringify(user.toJSON()));
-    this.userSubject.next(user);
+  getAuthToken(): string {
+    return this.getLocalUserData().token;
   }
 
 }

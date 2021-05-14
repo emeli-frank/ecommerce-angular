@@ -2,8 +2,8 @@
     <div *ngIf="loggedIn" class="nav-header">
         <app-user-avatar [initials]="userInitials"></app-user-avatar>
     
-        <h1 class="user-names">Samwise Gemgee</h1>
-        <p class="user-email">sam.gemgee@gmail.com</p>
+        <h1 class="user-names">{{(user$ | async).firstName}} {{(user$ | async).lastName}}</h1>
+        <p class="user-email">{{(user$ | async).email}}</p>
     </div>
 
     <div *ngIf="!loggedIn" style="height: 50px"></div>
