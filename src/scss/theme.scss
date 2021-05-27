@@ -1,13 +1,13 @@
 /* SHOULD NOT BE IMPORTED BY ANY SCSS FILE */
 
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import 'utils/variables';
 
 /* Should be imported only once */
-@include mat-core();
+@include mat.core();
 
 /* ======== Angular material custom themes ======== */ 
-$theme: mat-dark-theme($primary-palette, $accent-palette, $warn-palette);
+$theme: mat.define-dark-theme($primary-palette, $accent-palette, $warn-palette);
 
 // overriding angular material default background color (https://stackoverflow.com/a/49434227/6022278)
 $background: map-get($theme, background);
@@ -15,8 +15,8 @@ $background: map_merge($background, (background: $dark-blue-2));
 $theme: map_merge($theme, (background: $background));
 
 /* Should be imported only once */
-@include angular-material-theme($theme);
+@include mat.all-component-themes($theme);
 
 /* .app-dark-theme {
-    @include angular-material-color($theme);
+    @include mat.all-component-colors($theme);
 } */

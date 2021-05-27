@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import '../../../scss/utils/variables';
 
 :host {
@@ -13,6 +13,6 @@
     margin-right: 5px;
 
     &.active {
-        background-color: mat-color($primary-palette);
+        background-color: mat.get-color-from-palette($primary-palette);
     }
 }

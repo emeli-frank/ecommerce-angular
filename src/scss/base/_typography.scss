@@ -1,5 +1,6 @@
+@use '~@angular/material' as mat;
 .typo-color-primary {
-    color: mat-color($primary-palette);
+    color: mat.get-color-from-palette($primary-palette);
 }
 
 .typo-color-secondary {
@@ -7,5 +8,5 @@
 }
 
 .typo-color-warn {
-    color: mat-color($warn-palette);
+    color: mat.get-color-from-palette($warn-palette);
 }

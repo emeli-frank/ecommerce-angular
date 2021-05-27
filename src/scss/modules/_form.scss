@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import '../utils/variables';
 
 .field-container {
@@ -30,7 +30,7 @@
         display: block;
         font-size: 12px;
         margin-top: 5px;
-        color: mat-color($warn-palette);
+        color: mat.get-color-from-palette($warn-palette);
     }
     
 }

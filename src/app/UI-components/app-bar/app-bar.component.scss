@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import '../../../scss/utils/variables';
 
 .app-bar-container {
@@ -7,7 +7,7 @@
     align-items: center;
     padding-right: 5px;
     padding-left: 5px;
-    color: mat-color($primary-palette);
+    color: mat.get-color-from-palette($primary-palette);
     background-color: $dark-blue-1;
 }
 
