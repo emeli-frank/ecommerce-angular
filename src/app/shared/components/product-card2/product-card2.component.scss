@@ -1,0 +1,29 @@
+:host {
+    display: flex;
+
+    .image-container {
+        flex: 25% 0 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 3px 5px 1px rgb(0 0 0 / 30%);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .detail {
+        flex: 75% 0 0;
+        padding-left: 1rem;
+
+        .price {
+            font-size: 1.1rem;
+        }
+        
+        .name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #feaa0a;
+        }
+    }
+}

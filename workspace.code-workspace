@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"html.hover.documentation": false,
+		"html.hover.references": false,
+		"files.exclude": {
+			"**/*.spec.ts": true
+		}
+	}
+}

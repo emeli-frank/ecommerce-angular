@@ -10,3 +10,9 @@
 .typo-color-warn {
     color: mat.get-color-from-palette($warn-palette);
 }
+
+.page-title {
+    color: mat.get-color-from-palette($primary-palette);
+    font-weight: 500 !important;
+    font-size: 2rem !important;
+}

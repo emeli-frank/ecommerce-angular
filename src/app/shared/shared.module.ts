@@ -21,6 +21,8 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
 import { ScrollDotsComponent } from './scroll-dots/scroll-dots.component';
 import { Card2Component } from './components/card2/card2.component';
 import { FormFieldComponent } from './components/form/form-field/form-field.component';
+import { ProductCard2Component } from './components/product-card2/product-card2.component';
+import { ItemCountButtonComponent } from './components/item-count-button/item-count-button.component';
 
 
 
@@ -44,6 +46,8 @@ import { FormFieldComponent } from './components/form/form-field/form-field.comp
     ScrollDotsComponent,
     Card2Component,
     FormFieldComponent,
+    ProductCard2Component,
+    ItemCountButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +75,8 @@ import { FormFieldComponent } from './components/form/form-field/form-field.comp
     ScrollDotsComponent,
     Card2Component,
     FormFieldComponent,
+    ProductCard2Component,
+    ItemCountButtonComponent,
   ]
 })
 export class SharedModule { }

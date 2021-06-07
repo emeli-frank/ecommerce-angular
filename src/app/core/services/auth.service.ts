@@ -42,7 +42,11 @@ export class AuthService {
     const data = localStorage.getItem(this.userLocalStorageKey);
     try {
       const json = JSON.parse(data);
-      return {user: User.fromJSON(json['user']), token: json['token']};
+      if (json == null) {
+        return {user: null, token: null};
+      } else {
+        return {user: User.fromJSON(json['user']), token: json['token']};
+      }
     } catch (e) {
       console.error(e);
       return {user: null, token: null};

@@ -8,14 +8,14 @@
 </div>
 
 <div class="name mt-3 mb-4">
-    Self-heating graphene jacket
+    {{product.name}}
 </div>
 
 <div class="price d-flex align-items-center">
-    <span class="current">$250</span>
-    <span class="old ms-2">$350</span>
+    <span class="current">${{product.price.current}}</span>
+    <span class="old ms-2" *ngIf="product.price.old">${{product.price.old}}</span>
 </div>
 
-<div class="rating">
-    <app-rating [value]="3" [number]="3"></app-rating>
+<div *ngIf="product.rating" class="rating">
+    <app-rating [value]="3" [number]="product.rating"></app-rating>
 </div>

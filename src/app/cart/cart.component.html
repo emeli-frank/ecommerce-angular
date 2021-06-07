@@ -1,3 +1,14 @@
-<div *ngFor="let item of cartItems">
-    {{item | json}}
+<div class="px-3">
+    <h1 class="page-title">Cart</h1>
+
+    <section class="items">
+        <div *ngFor="let item of cartItems" class="item">    
+            <app-product-card2 [cartItem]="item" matRipple [routerLink]="['/products/', item.product.id]"></app-product-card2>
+            <app-item-count-button [value]="item.quantity" (changed)="onQuantityChanged($event, item.product.id)" class="mt-3"></app-item-count-button>
+        </div>
+    </section>
+
+    <div class="button-group vertical">
+        <button mat-flat-button color="primary">Check out <span *ngIf="cartItemCount$ | async as count">{{ count }}</span> item(s)</button>
+    </div>
 </div>
