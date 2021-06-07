@@ -13,6 +13,9 @@ export class ProductCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.product) {
+      throw 'product input field is required';
+    }
   }
 
 }

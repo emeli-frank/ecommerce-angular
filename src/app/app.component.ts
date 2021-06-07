@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
 import { CartService } from './core/services/cart.service';
@@ -32,8 +32,9 @@ import { User } from './shared/models/user';
     ])
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   user$: Observable<User>;
+  userSub: Subscription;
   loggedIn$: Observable<boolean>;
   loadingPage: boolean = false;
   navOpened: boolean = false;
@@ -70,7 +71,7 @@ export class AppComponent {
     });
 
     // set cart item
-    this.user$.subscribe(user => {
+    this.userSub = this.user$.subscribe(user => {
       if (!user) {
         // clean up. User has logged out
         this.numberOfCartItems$ = EMPTY;
@@ -78,7 +79,11 @@ export class AppComponent {
         // user is logged in
         this.numberOfCartItems$ = this.cartService.getCartItemCount(user.id);
       }
-    })
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userSub?.unsubscribe();
   }
 
   toggleNav() {

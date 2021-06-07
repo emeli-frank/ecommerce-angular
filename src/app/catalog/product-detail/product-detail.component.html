@@ -35,7 +35,9 @@
     </div>
 
     <div class="button-group vertical" style="margin-bottom: 80px;">
-        <button mat-flat-button color="primary" (click)="addItemToCart()"><mat-icon>add_shopping_cart</mat-icon> Add to cart</button>
+        <button mat-flat-button color="primary" (click)="addItemToCart()">
+            <mat-icon [matBadge]="cartCount" [matBadgeHidden]="cartCount==0" matBadgeColor="accent">add_shopping_cart</mat-icon> Add to cart
+        </button>
         <button mat-flat-button>Buy now</button>
     </div>
 

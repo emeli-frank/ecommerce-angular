@@ -1,3 +1,6 @@
-<button (click)="add()" class="subtract"><mat-icon>remove</mat-icon></button>
-<input [formControl]="control" type="text">
-<button (click)="subtract()" class="add"><mat-icon>add</mat-icon></button>
+<div>
+    <button (click)="subtract()" [disabled]="value == 0" class="subtract"><mat-icon>remove</mat-icon></button>
+    <input [formControl]="control" type="text">
+    <button (click)="add()" class="add"><mat-icon>add</mat-icon></button>
+</div>
+<button mat-icon-button *ngIf="modified" (click)="emitChange()"><mat-icon>save</mat-icon></button>

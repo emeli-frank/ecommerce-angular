@@ -33,7 +33,7 @@ $my-orange-palette: (
     )
 );
 $primary-palette: mat.define-palette($my-orange-palette);
-$accent-palette: mat.define-palette(mat.$pink-palette, 100, 500, A100); // change
+$accent-palette: mat.define-palette(mat.$teal-palette, 900); // change
 $warn-palette: mat.define-palette(mat.$red-palette);
 
 // dark colors

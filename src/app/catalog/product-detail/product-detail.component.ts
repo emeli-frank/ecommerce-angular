@@ -16,6 +16,7 @@ export class ProductDetailComponent implements OnInit {
 
   user: User;
   product: Product;
+  cartCount: number;
 
   constructor(private route: ActivatedRoute, private ns: NotificationService, 
     private authService: AuthService, private cartService: CartService) { }
@@ -23,20 +24,24 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authService.user;
 
-    this.route.data.subscribe((data: {product: Product}) => {
+    this.route.data.subscribe((data: {product: Product, cartCount: number}) => {
       if (!data.product) {
         this.ns.alert({message: "Product does not exist"});
       } else {
         this.product = data.product;
         console.log(this.product);
       }
+
+      this.cartCount = data.cartCount;
     });
+
   }
 
   addItemToCart() {
     this.cartService.addToCard(this.user.id, this.product.id).subscribe({
-      next: _ => {
+      next: count => {
         this.ns.snackbar('Added to card');
+        this.cartCount = count;
       },
       error: err => {
         this.ns.alertGenericNetworkError();

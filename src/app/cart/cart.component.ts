@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { AuthService } from '../core/services/auth.service';
 import { CartService } from '../core/services/cart.service';
+import { NotificationService } from '../core/services/notification.service';
 import { CartItem } from '../shared/interfaces/cart-item';
 
 @Component({
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   custId: number;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, 
+      private authService: AuthService, private ns: NotificationService) { }
 
   ngOnInit(): void {
     // get cust id
@@ -33,9 +35,17 @@ export class CartComponent implements OnInit {
     this.cartService.getCartItemCount(this.custId).subscribe(count => this.cartItemCountSub.next(count));
   }
 
-  onQuantityChanged(event: number, productId: number) {
-    console.log(productId);
-    // todo:: remove this amount from cart
+  onQuantityChanged(quantity: number, productId: number) {
+    this.cartService.updateCartItem(this.custId, productId, quantity).subscribe({
+      next: _ => {
+        if (quantity < 1) {
+          this.cartItems = this.cartItems.filter(item => item.product.id != productId);
+        }
+      },
+      error: err => {
+        this.ns.alertGenericNetworkError();
+      }
+    });
   }
 
 }

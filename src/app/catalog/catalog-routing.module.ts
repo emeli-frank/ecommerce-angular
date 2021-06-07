@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProductCartCountResolverService } from '../core/resolvers/product-cart-count-resolver.service';
 import { ProductListResolverService } from '../core/resolvers/product-list-resolver.service';
 import { ProductResolverService } from '../core/resolvers/product-resolver.service';
 import { CatalogComponent } from './catalog/catalog.component';
@@ -15,7 +16,10 @@ const routes: Routes = [
   {
     path: 'products/:productId',
     component: ProductDetailComponent,
-    resolve: {product: ProductResolverService},
+    resolve: {
+      product: ProductResolverService,
+      cartCount: ProductCartCountResolverService,
+    },
   }
 ];
 

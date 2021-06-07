@@ -4,7 +4,7 @@
     <section class="items">
         <div *ngFor="let item of cartItems" class="item">    
             <app-product-card2 [cartItem]="item" matRipple [routerLink]="['/products/', item.product.id]"></app-product-card2>
-            <app-item-count-button [value]="item.quantity" (changed)="onQuantityChanged($event, item.product.id)" class="mt-3"></app-item-count-button>
+            <app-item-count-button [value]="item.quantity" (changed)="onQuantityChanged($event, item.product.id)" class="block"></app-item-count-button>
         </div>
     </section>
 
