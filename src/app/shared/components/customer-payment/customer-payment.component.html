@@ -2,7 +2,7 @@
     <div *ngFor="let card of cards" class="d-flex my-4">
         <mat-icon svgIcon="mastercard"></mat-icon>
         <div class="flex-grow-1 ms-3">
-            <div>{{card.number}}</div>
+            <div>{{card.number | creditCard}}</div>
             <div>{{card.name}}</div>
         </div>
         <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>

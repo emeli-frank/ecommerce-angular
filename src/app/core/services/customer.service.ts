@@ -75,6 +75,8 @@ export class CustomerService {
 
     const dialogRef = this.dialog.open(AddressFormDialogComponent, {
       data: addressToUpdate,
+      width: '85%',
+      maxWidth: '600px',
     });
 
     const compInst = dialogRef.componentInstance;

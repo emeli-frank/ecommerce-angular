@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CardNumberInputComponent } from 'src/app/shared/components/card-number-input/card-number-input.component';
 import { Dialog } from 'src/app/shared/dialog/dialog';
 import { CreditCard } from 'src/app/shared/models/credit-card';
 
@@ -11,11 +12,13 @@ import { CreditCard } from 'src/app/shared/models/credit-card';
 })
 export class CreditCardDialogComponent extends Dialog implements OnInit {
 
+  @ViewChild(CardNumberInputComponent) cardInput: CardNumberInputComponent;
+
   form: FormGroup;
 
   get name() { return this.form.get('name') }
 
-  get number() { return this.form.get('number') }
+  // get number() { return this.form.get('number') }
 
   get cvc() { return this.form.get('cvc') }
 
@@ -34,9 +37,9 @@ export class CreditCardDialogComponent extends Dialog implements OnInit {
         Validators.required,
         Validators.maxLength(64),
       ]),
-      number: new FormControl('', [
+      /* number: new FormControl('', [
         Validators.required,
-      ]),
+      ]), */
       cvc: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -49,7 +52,7 @@ export class CreditCardDialogComponent extends Dialog implements OnInit {
   }
 
   submit2() {
-    let card = new CreditCard(null, this.name.value, this.number.value, this.cvc.value, new Date(this.expiryDate.value))
+    let card = new CreditCard(null, this.name.value, this.cardInput.value, this.cvc.value, new Date(this.expiryDate.value))
     this.submit(card);
   }
 

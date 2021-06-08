@@ -27,7 +27,6 @@ export class CustomerPaymentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.cards);
   }
 
   ngOnDestroy(): void {
@@ -48,7 +47,10 @@ export class CustomerPaymentComponent implements OnInit, OnDestroy {
   }
 
   newCard() {
-    const dialogRef = this.dialog.open(CreditCardDialogComponent, {});
+    const dialogRef = this.dialog.open(CreditCardDialogComponent, {
+      maxWidth: '85%',
+      width: '85%',
+    });
 
     this.dialogsub = dialogRef.afterClosed().subscribe(
       card => {

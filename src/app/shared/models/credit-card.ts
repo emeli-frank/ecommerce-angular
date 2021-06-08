@@ -1,5 +1,5 @@
 export class CreditCard {
-  constructor(public id: number, public name: string, public number: number, public cvc: string, public expiryDate: Date) {
+  constructor(public id: number, public name: string, public number: string, public cvc: string, public expiryDate: Date) {
 
   }
 

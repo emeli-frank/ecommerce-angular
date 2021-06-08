@@ -1,0 +1,8 @@
+.card-number {
+    display: flex;
+    justify-content: space-between;
+
+    & > *:not(:first-child) {
+        margin-left: .8rem;
+    }
+}

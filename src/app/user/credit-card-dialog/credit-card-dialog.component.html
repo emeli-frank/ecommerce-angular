@@ -1,22 +1,28 @@
+<h2>Card info</h2>
+
 <form [formGroup]="form">
-    <div>
-        <input [formControl]="name" placeholder="name">
+    <div class="mb-4">
+        <app-form-field>
+            <input [formControl]="name" placeholder="Name">
+        </app-form-field>
     </div>
 
-    <div>
-        <input [formControl]="number" placeholder="number">
+    <app-card-number-input></app-card-number-input>
+
+    <div class="mb-4">
+        <app-form-field>
+            <input [formControl]="cvc" placeholder="cvc">
+        </app-form-field>
     </div>
 
-    <div>
-        <input [formControl]="cvc" placeholder="cvc">
+    <div class="mb-4">
+        <app-form-field>
+            <input [formControl]="expiryDate" placeholder="Expiry date">
+        </app-form-field>
     </div>
 
-    <div>
-        <input [formControl]="expiryDate" placeholder="expiryDate">
-    </div>
-
-    <div mat-dialog-actions>
+    <div mat-dialog-actions align="end">
         <button mat-button [mat-dialog-close]>Cancel</button>
-        <button mat-button (click)="submit2()" [disabled]="!form.valid || isBusy" cdkFocusInitial>{{primaryButtonLabel}}</button>
+        <button mat-button color="primary" (click)="submit2()" [disabled]="!form.valid || isBusy" cdkFocusInitial>{{primaryButtonLabel}}</button>
     </div>
 </form>

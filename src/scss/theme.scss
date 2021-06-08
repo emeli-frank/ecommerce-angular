@@ -20,3 +20,10 @@ $theme: map_merge($theme, (background: $background));
 /* .app-dark-theme {
     @include mat.all-component-colors($theme);
 } */
+
+// dialog background // todo:: see if to move to somewhere more appropriate
+.app-dark-theme {
+    .mat-dialog-container {
+        background-color: $dark-blue-2;
+    }
+}

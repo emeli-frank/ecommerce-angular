@@ -75,6 +75,8 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
   editPersonalInfo() {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
       data: this.user,
+      maxWidth: '85%',
+      width: '85%',
     });
 
     this.dialogsub = dialogRef.componentInstance.done.subscribe(
@@ -157,8 +159,8 @@ export class UserDashboardComponent implements OnInit, OnDestroy {
       });
   }
 
-  updateAddress(address?: Address) {
-    this.custService.updateAddress(this.user.id, address)
+  updateAddress() {
+    this.custService.updateAddress(this.user.id, this.address)
       .subscribe({
         next: address => {
           this.address = address;

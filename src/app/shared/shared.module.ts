@@ -23,6 +23,8 @@ import { Card2Component } from './components/card2/card2.component';
 import { FormFieldComponent } from './components/form/form-field/form-field.component';
 import { ProductCard2Component } from './components/product-card2/product-card2.component';
 import { ItemCountButtonComponent } from './components/item-count-button/item-count-button.component';
+import { CardNumberInputComponent } from './components/card-number-input/card-number-input.component';
+import { CreditCardPipe } from './pipes/credit-card.pipe';
 
 
 
@@ -48,6 +50,8 @@ import { ItemCountButtonComponent } from './components/item-count-button/item-co
     FormFieldComponent,
     ProductCard2Component,
     ItemCountButtonComponent,
+    CardNumberInputComponent,
+    CreditCardPipe,
   ],
   imports: [
     CommonModule,
@@ -77,6 +81,8 @@ import { ItemCountButtonComponent } from './components/item-count-button/item-co
     FormFieldComponent,
     ProductCard2Component,
     ItemCountButtonComponent,
+    CardNumberInputComponent,
+    CreditCardPipe,
   ]
 })
 export class SharedModule { }

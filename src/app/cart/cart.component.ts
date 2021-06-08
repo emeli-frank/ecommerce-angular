@@ -48,4 +48,8 @@ export class CartComponent implements OnInit {
     });
   }
 
+  preventPropagation(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
 }

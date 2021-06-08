@@ -31,7 +31,7 @@ import { FooterComponent } from './UI-components/footer/footer.component';
 })
 export class AppModule {
   // adding class so that dark theme can affect overlay components
-  /* constructor(overlayContainer: OverlayContainer) {
+  constructor(overlayContainer: OverlayContainer) {
       overlayContainer.getContainerElement().classList.add('app-dark-theme');
-  } */
+  }
 }

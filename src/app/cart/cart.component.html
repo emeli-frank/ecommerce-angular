@@ -2,9 +2,13 @@
     <h1 class="page-title">Cart</h1>
 
     <section class="items">
-        <div *ngFor="let item of cartItems" class="item">    
-            <app-product-card2 [cartItem]="item" matRipple [routerLink]="['/products/', item.product.id]"></app-product-card2>
-            <app-item-count-button [value]="item.quantity" (changed)="onQuantityChanged($event, item.product.id)" class="block"></app-item-count-button>
+        <div *ngFor="let item of cartItems" matRipple [routerLink]="['/products/', item.product.id]" class="item">    
+            <app-product-card2 [cartItem]="item"></app-product-card2>
+            <app-item-count-button 
+                [value]="item.quantity" 
+                (changed)="onQuantityChanged($event, item.product.id)" 
+                (click)="preventPropagation($event)"
+                class="block"></app-item-count-button>
         </div>
     </section>
 

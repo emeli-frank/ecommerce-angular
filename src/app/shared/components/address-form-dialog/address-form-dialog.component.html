@@ -1,46 +1,48 @@
+<h2>Address</h2>
+
 <form [formGroup]="form">
-    <div>
+    <app-form-field class="block mb-4">
         <input [formControl]="country" placeholder="country">
-        <div *ngIf="country.invalid && (country.dirty || country.touched)">
+        <div errors *ngIf="country.invalid && (country.dirty || country.touched)">
             <span *ngIf="country.errors?.required">This field is required</span>
             <span *ngIf="country.errors?.maxlength">This field cannot be more than {{country.errors.maxlength.requiredLength}} characters</span>
         </div>
-    </div>
+    </app-form-field>
 
-    <div>
+    <app-form-field class="block mb-4">
         <input [formControl]="state" placeholder="state">
-        <div *ngIf="state.invalid && (state.dirty || state.touched)">
+        <div errors *ngIf="state.invalid && (state.dirty || state.touched)">
             <span *ngIf="state.errors?.required">This field is required</span>
             <span *ngIf="state.errors?.maxlength">This field cannot be more than {{state.errors.maxlength.requiredLength}} characters</span>
         </div>
-    </div>
+    </app-form-field>
 
-    <div>
+    <app-form-field class="block mb-4">
         <input [formControl]="city" placeholder="city">
-        <div *ngIf="city.invalid && (city.dirty || city.touched)">
+        <div errors *ngIf="city.invalid && (city.dirty || city.touched)">
             <span *ngIf="city.errors?.required">This field is required</span>
             <span *ngIf="city.errors?.maxlength">This field cannot be more than {{city.errors.maxlength.requiredLength}} characters</span>
         </div>
-    </div>
+    </app-form-field>
 
-    <div>
+    <app-form-field class="block mb-4">
         <input [formControl]="postalCode" placeholder="postalCode">
-        <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)">
+        <div errors *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)">
             <span *ngIf="postalCode.errors?.required">This field is required</span>
             <span *ngIf="postalCode.errors?.maxlength">This field cannot be more than {{postalCode.errors.maxlength.requiredLength}} characters</span>
         </div>
-    </div>
+    </app-form-field>
 
-    <div>
+    <app-form-field class="block mb-4">
         <input [formControl]="address" placeholder="address">
-        <div *ngIf="address.invalid && (address.dirty || address.touched)">
+        <div errors *ngIf="address.invalid && (address.dirty || address.touched)">
             <span *ngIf="country.errors?.required">This field is required</span>
             <span *ngIf="postalCode.errors?.maxlength">This field cannot be more than {{address.errors.maxlength.requiredLength}} characters</span>
         </div>
-    </div>
+    </app-form-field>
 
-    <div mat-dialog-actions>
+    <div mat-dialog-actions align="end">
         <button mat-button [mat-dialog-close]>Cancel</button>
-        <button mat-button (click)="submit2()" [disabled]="!form.valid || isBusy" cdkFocusInitial>{{primaryButtonLabel}}</button>
+        <button mat-button (click)="submit2()" color="primary" [disabled]="!form.valid || isBusy" cdkFocusInitial>{{primaryButtonLabel}}</button>
     </div>
 </form>

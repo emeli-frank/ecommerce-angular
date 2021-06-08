@@ -26,7 +26,7 @@
             <h1 class="flex-grow-1 card-head">Address</h1>
             <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="updateAddress(address)">Edit</button>
+                <button mat-menu-item (click)="updateAddress()">Edit</button>
                 <button mat-menu-item (click)="deleteAddress()">Delete</button>
             </mat-menu>
         </div>
@@ -55,7 +55,10 @@
         </div>
 
         <div *ngIf="!address">
-            No default shipping address information
+            <p>No default shipping address information</p>
+            <div class="button-group align-center">
+                <button mat-button color="accent" (click)="updateAddress()">Create</button>
+            </div>
         </div>
     </div>
 </app-card1>
