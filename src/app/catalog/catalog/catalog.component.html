@@ -2,6 +2,12 @@
     <app-product-list [products]="products" (clicked)="onProductClick($event)"></app-product-list>
 </div> -->
 
+<div class="flex items-center justify-between px-page overflow">
+    <span>ALL</span>
+
+    <button mat-flat-button color="accent" (click)="showFilter(true)">Filters({{filterCount}}) <mat-icon>filter_alt_outline</mat-icon></button>
+</div>
+
 <app-product-list>
     <app-product-card *ngFor="let product of products" [product]="product" (click)="onProductClick(product.id)" class="product">
         <button action-object mat-mini-fab (click)="addToCart($event)" color="primary" style="transform: scale(.9);">
@@ -9,4 +15,3 @@
         </button>
     </app-product-card>
 </app-product-list>
-

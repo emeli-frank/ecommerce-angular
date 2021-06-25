@@ -1,0 +1,38 @@
+@use 'sass:map';
+@import '../../../scss/utils/variables';
+
+.search {
+    & > * {
+        width: 100%;
+    }
+}
+
+.price-filter {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+        width: 45%;
+    }
+}
+
+.radio-group {
+    & > * {
+        display: block;
+    }
+
+    & > *:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.section-label {
+    font-size: 12px;
+    color: map.get($primary-palette, 500);
+    font-weight: 500;
+    letter-spacing: 0.15rem;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}

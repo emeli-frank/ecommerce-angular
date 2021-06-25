@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-wait',
   templateUrl: './wait.component.html',
-  styleUrls: ['./wait.component.css']
+  styleUrls: ['./wait.component.scss']
 })
 export class WaitComponent {
 

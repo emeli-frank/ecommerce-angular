@@ -13,8 +13,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(categoryID?: number, filter?: Filter): Observable<Product[]> {
-    const categoryParam = categoryID ? `category=${categoryID}` : '';
+  getProducts(filter?: Filter): Observable<Product[]> {
+    const categoryParam = filter?.categoryID ? `category=${filter.categoryID}` : '';
     const minPriceParam = filter?.minPrice ? `min-price=${filter.minPrice}` : '';
     const maxPriceParam = filter?.maxPrice ? `min-price=${filter.maxPrice}` : '';
     const discountParam = filter?.discount ? `discount=${filter.discount}` : '';

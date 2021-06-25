@@ -1,0 +1,42 @@
+<div [formGroup]="form">
+    <p class="section-label">SEARCH</p>
+    <div class="search">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input [formControl]="search" matInput placeholder="Search">
+        </mat-form-field>
+    </div>
+
+    <ng-container *ngIf="!advanced">
+        <div mat-dialog-actions align="end">
+            <button mat-button color="primary" (click)="advanced = true">Advanced</button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="advanced">
+        <p class="section-label">PRICE</p>
+        <div class="price-filter">
+            <mat-form-field appearance="outline">
+                <mat-label>Min price</mat-label>
+                <input type="number" [formControl]="minPrice" matInput placeholder="Min price">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Max price</mat-label>
+                <input type="number" [formControl]="maxPrice" matInput placeholder="Max price">
+            </mat-form-field>
+        </div>
+
+        <P class="section-label mt-6">DISCOUNT</P>
+        <mat-radio-group [formControl]="discount" class="radio-group">
+            <mat-radio-button [value]="60" color="primary" class="block">60%</mat-radio-button>
+            <mat-radio-button [value]="40" color="primary" class="block">40%</mat-radio-button>
+            <mat-radio-button [value]="20" color="primary" class="block">20%</mat-radio-button>
+            <mat-radio-button [value]="0" color="primary" class="block">None</mat-radio-button>
+        </mat-radio-group>
+    </ng-container>
+
+    <div mat-dialog-actions align="end" class="mt-6">
+        <button mat-button [mat-dialog-close]>Cancel</button>
+        <button mat-button color="primary" (click)="returnFilter()" cdkFocusInitial>{{label}}</button>
+    </div>
+</div>
